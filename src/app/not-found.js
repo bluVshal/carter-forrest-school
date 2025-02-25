@@ -2,7 +2,7 @@ import React from 'react'
 
 const NotFound = () => {
   return (
-    <div>Rate simE? Pas ici ca</div>
+    <div><h1>Out of bounds! Please return to class!</h1></div>
   )
 }
 
