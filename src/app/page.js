@@ -1,17 +1,10 @@
-import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
-      <main>
-
-        <div>
-         <h1>Carter Forrest School</h1>
-        </div>
-      </main>
-      <footer>
-       
-      </footer>
+      <div className=" ml-3 mt-4 max-h-20">
+        <h1 className="text-4xl">Carter Forrest School 123</h1>
+      </div>
     </div>
   );
 }
