@@ -1,23 +1,19 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Castoro_Titling, Jost } from "next/font/google";
 import "./globals.css";
 import {
   ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs'
+} from "@clerk/nextjs";
+import Header from '../components/header';
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const castoroTitling = Castoro_Titling({
+  variable: "--font-castoro-titling",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const jost = Jost({
+  variable: "--font-jost",
+  subsets: ["latin"]
 });
 
 export const metadata = {
@@ -29,22 +25,9 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <header className="flex justify-end items-center p-4 gap-4 h-16">
-        
-        </header>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-            <SignedOut>
-            <SignInButton />
-            <SignUpButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <div>         
-            {children}
-          </div>
+        <body>
+          <Header />
+          <div>{children}</div>
         </body>
       </html>
     </ClerkProvider>
