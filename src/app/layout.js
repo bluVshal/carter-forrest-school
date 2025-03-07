@@ -1,15 +1,10 @@
-import { Castoro_Titling, Jost } from "next/font/google";
+import { Jost } from "next/font/google";
 import "./globals.css";
 import {
   ClerkProvider,
 } from "@clerk/nextjs";
+import { shadesOfPurple } from "@clerk/themes";
 import Header from '../components/header';
-
-const castoroTitling = Castoro_Titling({
-  variable: "--font-castoro-titling",
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const jost = Jost({
   variable: "--font-jost",
@@ -23,7 +18,24 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+
+    <ClerkProvider
+      appearance={{
+        baseTheme:shadesOfPurple,
+        variables: {
+          colorPrimary: '#3b8776',
+          colorBackground: '#1a202c',
+          colorInputBackground: '#2d3748',
+          colorInputText: '#f311f6'
+        },
+        elements: {
+          formButtonPrimary: "text-white",
+          card: "bg-gray-800",
+          headerTitle: "text-blue-400",
+          headerSubtitle: "text-gray-400"
+        }
+      }}
+    >
       <html lang="en">
         <body>
           <Header />

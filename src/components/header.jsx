@@ -3,8 +3,9 @@ import { SignedIn, SignInButton, SignedOut } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
+
     return (
-        <div>
+        <div>            
             <SignedOut>
                 <SignInButton forceRedirectUrl="/">
                     <Button variant="outline">Login</Button>
