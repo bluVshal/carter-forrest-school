@@ -1,28 +1,15 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { NextResponse } from "next/server";
 
-const isProtectedRoute = createRouteMatcher([
-  "/home(.*)",
-  "/students(.*)",
-  "/teachers(.*)",
-  "/subjects(.*)",
-  "/admission(.*)",
-  "/enrolment(.*)",
-]);
+const isPublicRoute = createRouteMatcher([
+  '/sign-in(.*)',
+  '/sign-up(.*)'
+])
 
-export default clerkMiddleware((auth, req) => {
-  if(!auth().userId && isProtectedRoute(req)){
-    return auth().redirectToSignIn();
+export default clerkMiddleware(async (auth, request) => {
+  if (!isPublicRoute(request)) {
+    await auth.protect()
   }
-  if(
-    auth().userId &&
-    !auth().orgId &&
-    req.nextUrl.pathname !== "/home" &&
-    req.nextUrl.pathname !== "/"
-  ) {
-    return NextResponse.redirect(new URL("/home", req.url));
-  }
-});
+})
 
 export const config = {
   matcher: [
