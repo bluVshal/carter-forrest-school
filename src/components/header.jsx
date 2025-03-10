@@ -12,7 +12,7 @@ const Header = () => {
                 </SignInButton>
             </SignedOut>
             <SignedIn>
-                <p> Signed In </p>
+                <p> Welcome to:  </p>
             </SignedIn>
         </div>
     )
