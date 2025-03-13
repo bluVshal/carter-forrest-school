@@ -7,13 +7,11 @@ const Header = () => {
     return (
         <div>            
             <SignedOut>
-                <SignInButton forceRedirectUrl="/">
-                    <Button variant="outline">Login</Button>
-                </SignInButton>
+                <p className="text-3xl"> Please sign in to continue: </p>
             </SignedOut>
             <SignedIn>
                 <SignOutButton>
-                    <button>Log Out</button>
+                    <Button variant="outline">Log Out</Button>
                 </SignOutButton>
             </SignedIn>
         </div>
