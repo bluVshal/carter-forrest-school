@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-3.0.x"] /* for linux env only*/
 }
 
@@ -8,44 +8,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id            String    @id @default(cuid())
-  clerkUserId   String    @unique
-  email         String    @unique
-  name          String?
-  imageUrl      String?
-  isActive      Boolean
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt 
+model User {
+  id          String   @id @default(cuid())
+  clerkUserId String   @unique
+  email       String   @unique
+  name        String
+  imageUrl    String?
+  isActive    Boolean
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Students {
-  id                String   @id @default(cuid())
-  name              String
-  address           String
-  responsibleParty  String?
-  phoneNumber       Int
-  responsiblePartyRelation    String
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  @@unique([organizationId, key])
+  id                       String   @id @default(cuid())
+  name                     String
+  address                  String
+  responsiblePartyName     String
+  phoneNumber              Int
+  responsiblePartyRelation String
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
 }
 
 model Teachers {
   id             String   @id @default(cuid())
   name           String
   address        String
-  phoneNumber       Int
-  organizationId String
-  sprints        Sprint[]
-  issues         Issue[]
+  email          String
+  phoneNumber    Int
+  nic            String
+  emergencyPhone Int
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-
-  @@unique([organizationId, key])
 }
-
-
-
-
