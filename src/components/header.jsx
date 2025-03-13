@@ -1,5 +1,5 @@
 import React from 'react';
-import { SignedIn, SignInButton, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignInButton, SignedOut, SignOutButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -12,7 +12,9 @@ const Header = () => {
                 </SignInButton>
             </SignedOut>
             <SignedIn>
-                <p> Welcome to:  </p>
+                <SignOutButton>
+                    <button>Log Out</button>
+                </SignOutButton>
             </SignedIn>
         </div>
     )
