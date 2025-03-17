@@ -5,6 +5,9 @@ import {
 } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 import Header from '../components/header';
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 const jost = Jost({
   variable: "--font-jost",
