@@ -109,7 +109,17 @@
   }
 }
 
+.goTopHidden {
+  display: none;
+}
 
+.goTop {
+  display: block;
+}
+
+.goTop:hover {
+  transform: scale(1.1);
+}
 
 @layer base {
   * {
