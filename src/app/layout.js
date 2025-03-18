@@ -1,4 +1,3 @@
-import { Jost } from "next/font/google";
 import "./globals.css";
 import {
   ClerkProvider,
@@ -7,12 +6,9 @@ import { shadesOfPurple } from "@clerk/themes";
 import Header from '../components/header';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-config.autoAddCss = false;
+import './i18n';
 
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"]
-});
+config.autoAddCss = false;
 
 export const metadata = {
   title: "Carter Forrest School",

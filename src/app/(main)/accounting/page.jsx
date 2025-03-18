@@ -2,7 +2,7 @@ import React from 'react'
 
 const Accounting = () => {
   return (
-    <div className="font-FT">Accounting Page</div>
+    <div className="font-LS">Accounting Page</div>
   )
 }
 
