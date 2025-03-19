@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const Header = () => {
 
     return (
-        <div>            
+        <div>
             <SignedOut>
                 <p className="text-3xl"> Please sign in to continue: </p>
             </SignedOut>

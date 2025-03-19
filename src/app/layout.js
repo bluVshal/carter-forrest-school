@@ -6,7 +6,7 @@ import { shadesOfPurple } from "@clerk/themes";
 import Header from '../components/header';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import './i18n';
+import LanguageSelector from "@/components/language-selector";
 
 config.autoAddCss = false;
 
@@ -38,7 +38,8 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body>
           <Header />
-          <div>{children}</div>
+          <div>
+          <LanguageSelector />   {children}</div>
         </body>
       </html>
     </ClerkProvider>
