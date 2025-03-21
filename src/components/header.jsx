@@ -6,8 +6,9 @@ const Header = () => {
 
     return (
         <div>
+            <h1 className="text-center text-4xl font-CT mb-4 mt-2"> CARTER FORREST SCHOOL </h1>
             <SignedOut>
-                <p className="text-3xl"> Please sign in to continue: </p>
+                <p> Please sign in to continue: </p>
             </SignedOut>
             <SignedIn>
                 <SignOutButton>
