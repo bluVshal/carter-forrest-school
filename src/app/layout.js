@@ -6,7 +6,6 @@ import { shadesOfPurple } from "@clerk/themes";
 import Header from '../components/header';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import LanguageSelector from "@/components/language-selector";
 
 config.autoAddCss = false;
 
@@ -20,7 +19,7 @@ export default function RootLayout({ children }) {
 
     <ClerkProvider
       appearance={{
-        baseTheme:shadesOfPurple,
+        baseTheme: shadesOfPurple,
         variables: {
           colorPrimary: '#3b8776',
           colorBackground: '#1a202c',
@@ -39,7 +38,7 @@ export default function RootLayout({ children }) {
         <body>
           <Header />
           <div>
-          <LanguageSelector />   {children}</div>
+            {children}</div>
         </body>
       </html>
     </ClerkProvider>
