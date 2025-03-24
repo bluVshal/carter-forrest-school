@@ -2,7 +2,7 @@ import "./globals.css";
 import {
   ClerkProvider,
 } from "@clerk/nextjs";
-import { shadesOfPurple } from "@clerk/themes";
+import { shadesOfGreen } from "@clerk/themes";
 import Header from '../components/header';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
 
     <ClerkProvider
       appearance={{
-        baseTheme: shadesOfPurple,
+        baseTheme: shadesOfGreen,
         variables: {
           colorPrimary: '#3b8776',
           colorBackground: '#1a202c',
