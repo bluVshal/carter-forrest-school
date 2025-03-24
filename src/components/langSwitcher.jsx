@@ -1,13 +1,10 @@
 'use client';
 
 import React from 'react'
-import { Button } from './ui/button'
-import { useTranslation } from 'react-i18next';
+import { Button } from './ui/button';
 import i18next from "i18next";
 
 const LangSwitcher = () => {
-    const [t, i8n] = useTranslation("global");
-
     const handleChangeLanguage = (lang) => {
         i18next.changeLanguage(lang);
     };
