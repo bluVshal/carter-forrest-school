@@ -7,6 +7,8 @@ import Header from '../components/header';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
+import { Providers } from './Providers';
+
 config.autoAddCss = false;
 
 export const metadata = {
@@ -34,13 +36,15 @@ export default function RootLayout({ children }) {
         }
       }}
     >
-      <html lang="en">
-        <body>
-          <Header />
-          <div>
-            {children}</div>
-        </body>
-      </html>
+      <Providers>
+        <html lang="en">
+          <body>
+            <Header />
+            <div>
+              {children}</div>
+          </body>
+        </html>
+      </Providers>
     </ClerkProvider>
   );
 }
