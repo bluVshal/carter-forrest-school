@@ -17,7 +17,7 @@ const Header = () => {
             </SignedOut>
             <SignedIn>
                 <SignOutButton>
-                    <Button className="font-FT" variant="outline">Log Out</Button>
+                    <Button className="font-FT" variant="outline">{t('logOut')}</Button>
                 </SignOutButton>
             </SignedIn>
         </div>
