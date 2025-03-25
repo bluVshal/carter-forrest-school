@@ -1,23 +1,26 @@
 "use client";
 
 import React from 'react';
-import { SignedIn, SignInButton, SignedOut, SignOutButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignOutButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import LangSwitcher from './langSwitcher';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
+
 const Header = () => {
   const [ t, i18n ] = useTranslation("global");
+  
     return (
         <div>
-            <LangSwitcher />
+            <LangSwitcher usedLang={i18n.language}/>
             <h1 className="text-center text-4xl font-CT mb-4 mt-2"> CARTER FORREST SCHOOL </h1>
             <SignedOut>
                 <p>{t('pleaseSignIn')}</p>
             </SignedOut>
             <SignedIn>
                 <SignOutButton>
-                    <Button className="font-FT" variant="outline">{t('logOut')}</Button>
+                    <Button className="font-FT" variant="outline">{t('logOut')} <FontAwesomeIcon icon={ faArrowRightFromBracket } /></Button>
                 </SignOutButton>
             </SignedIn>
         </div>
