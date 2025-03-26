@@ -7,16 +7,18 @@ import LangSwitcher from './langSwitcher';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
+import MenuBar from './menu-bar';
 
 const Header = () => {
   const [ t, i18n ] = useTranslation("global");
   
     return (
         <div>
-            <LangSwitcher usedLang={i18n.language}/>
             <h1 className="text-center text-4xl font-CT mb-4 mt-2"> CARTER FORREST SCHOOL </h1>
+            <LangSwitcher usedLang={i18n.language}/>
+            <MenuBar />
             <SignedOut>
-                <p>{t('pleaseSignIn')}</p>
+                <p className="ml-4 font-FT">{t('pleaseSignIn')}</p>
             </SignedOut>
             <SignedIn>
                 <SignOutButton>
