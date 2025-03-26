@@ -16,11 +16,11 @@ const Header = () => {
         <div>
             <h1 className="text-center text-4xl font-CT mb-4 mt-2"> CARTER FORREST SCHOOL </h1>
             <LangSwitcher usedLang={i18n.language}/>
-            <MenuBar />
             <SignedOut>
-                <p className="ml-4 font-FT">{t('pleaseSignIn')}</p>
+                <p className="mt-3 ml-4 font-FT">{t('pleaseSignIn')}</p>
             </SignedOut>
             <SignedIn>
+                <MenuBar />
                 <SignOutButton>
                     <Button className="font-FT" variant="outline">{t('logOut')} <FontAwesomeIcon icon={ faArrowRightFromBracket } /></Button>
                 </SignOutButton>
