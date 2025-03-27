@@ -1,9 +1,13 @@
 import React from 'react'
 
 const NoticeBoard = () => {
-  return (
-    <div> <p className="ml-3 font-FT">Notice Board for general announcement</p></div>
-  )
+    return (
+        <div>
+            <div className="ml-3 font-FT">
+                <p>Notice Board for general announcement</p>
+            </div>
+        </div>
+    )
 }
 
 export default NoticeBoard;
