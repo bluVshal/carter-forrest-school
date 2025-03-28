@@ -12,7 +12,7 @@ const Students = async () => {
         <SearchForm />
         <div className="ml-3 font-FT">
           {students.map((stud)=>{
-            return <p> {stud.name} </p>
+            return <p key={stud.id}> {stud.name} </p>
           })}
         </div>
         <div>

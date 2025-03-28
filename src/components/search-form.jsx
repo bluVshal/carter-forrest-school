@@ -14,15 +14,15 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import formSchema from './formSchema';
+import { searchFormSchema } from '@/app/lib/validators';
 
 const SearchForm = () => {
-
     // 1. Define your form.
     const form = useForm({
-        resolver: zodResolver(formSchema),
+        resolver: zodResolver(searchFormSchema),
         defaultValues: {
             teacherName: "",
+            address: ""
         },
     })
 
@@ -38,12 +38,28 @@ const SearchForm = () => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <FormField
                             control={form.control}
-                            name="username"
+                            name="teacherName"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Teacher Name</FormLabel>
+                                    <FormLabel>Student Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="name of teacher" {...field} />
+                                        <Input placeholder="name of student" {...field} />
+                                    </FormControl>
+                                    <FormDescription>
+                                        This is your public display name.
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="address"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Address</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="address of student" {...field} />
                                     </FormControl>
                                     <FormDescription>
                                         This is your public display name.
