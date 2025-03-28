@@ -1,11 +1,23 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { getStudents } from '@/app/actions/students';
+import SearchForm from '@/components/search-form';
+import DataTable from '@/components/table/page';
 
-const Students = () => {
+const Students = async () => {
+  const students = await getStudents();
+
   return (
-    <div>
+    <div className="ml-3 mt-4 max-h-20 font-LS">
         Students Home Page
+        <SearchForm />
+        <div className="ml-3 font-FT">
+          {students.map((stud)=>{
+            return <p> {stud.name} </p>
+          })}
+        </div>
+        <div>
+        <DataTable />       
+      </div>
     </div>
   )
 }
