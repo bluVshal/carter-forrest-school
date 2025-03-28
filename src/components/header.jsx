@@ -17,12 +17,12 @@ const Header = () => {
             <h1 className="text-center text-4xl font-CT mb-4 mt-2"> CARTER FORREST SCHOOL </h1>
             <LangSwitcher usedLang={i18n.language}/>
             <SignedOut>
-                <p className="mt-3 ml-4 font-FT">{t('pleaseSignIn')}</p>
+                <p className="mt-3 ml-4 font-FT">{t('general.pleaseSignIn')}</p>
             </SignedOut>
             <SignedIn>
                 <MenuBar />
                 <SignOutButton>
-                    <Button className="font-FT" variant="outline">{t('logOut')} <FontAwesomeIcon icon={ faArrowRightFromBracket } /></Button>
+                    <Button className="font-FT" variant="outline">{t('general.logOut')} <FontAwesomeIcon icon={ faArrowRightFromBracket } /></Button>
                 </SignOutButton>
             </SignedIn>
         </div>

@@ -10,6 +10,8 @@
         "logOut": "Log Out"
     },
     "searchForm": {
-        "teacherNameMin":"Teacher Name must be at least 2 characters"
+        "teacherNameMin":"Teacher's name must be at least 2 characters",
+        "search":"Search",
+        "clearAll":"Clear All"
     }
 }

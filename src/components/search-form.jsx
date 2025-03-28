@@ -1,13 +1,12 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -15,8 +14,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { searchFormSchema } from '@/app/lib/validators';
+import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const SearchForm = () => {
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("")
     // 1. Define your form.
     const form = useForm({
         resolver: zodResolver(searchFormSchema),
@@ -29,7 +33,16 @@ const SearchForm = () => {
     // 2. Define a submit handler.
     function onSubmit(values) {
         console.log(values);
+        setAddress(values.address);
     }
+
+    const clearAllHandler = (values) => {
+        setAddress("");
+        values = {};
+        console.log("Reached here")
+    }
+
+    const [ t, i18n ] = useTranslation("global");
 
     return (
         <div>Search Form
@@ -45,9 +58,6 @@ const SearchForm = () => {
                                     <FormControl>
                                         <Input placeholder="name of student" {...field} />
                                     </FormControl>
-                                    <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -61,15 +71,12 @@ const SearchForm = () => {
                                     <FormControl>
                                         <Input placeholder="address of student" {...field} />
                                     </FormControl>
-                                    <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit">Search</Button>
-                        <Button type="clear">Clear All</Button>
+                        <Button type="submit">{t('searchForm.search')}<FontAwesomeIcon icon={ faMagnifyingGlass } /></Button>
+                        <Button type="reset" onClick={clearAllHandler}>{t('searchForm.clearAll')}<FontAwesomeIcon icon={ faXmark } /></Button>
                     </form>
                 </Form>
             </div>
