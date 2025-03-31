@@ -121,10 +121,26 @@
   transform: scale(1.1);
 }
 
+#btn_fr{
+  background-image: url("/languages/France.png");
+  background-size:     cover;
+  color:black
+}
+#btn_es{
+  background-image: url("/languages/Spain.png");
+  background-size:     cover;   
+  color:black
+}
+#btn_en{
+  background-image: url("/languages/United_States.png");
+  background-size:     cover; 
+  color:black  
+}
+/*
 .btnLangChange:disabled{
   background: yellow;
   color: #254117;
-}
+}*/
 
 @layer base {
   * {
