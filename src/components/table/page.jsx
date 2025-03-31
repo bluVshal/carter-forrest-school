@@ -1,31 +1,47 @@
-import { Payment, columns } from "./columns"
-import { DataTable } from "./data-table"
- 
-async function getData(){
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-        id: "729ed52f",
-        amount: 110,
-        status: "pending",
-        email: "e@example.com",
-      },
-    // ...
-  ]
+import React from 'react'
+//import * as columnsObj from './columns';
+
+const page = () => {
+    const columns = [
+        {
+            id:"id",
+            header:"Id"
+        },
+        {
+            id:"name",
+            header:"Name"
+        },    
+        {
+            id:"address",
+            header:"Address"
+        },    
+        {
+            id:"aa",
+            header:"AA"
+        },    
+        {
+            id:"bb",
+            header:"BB"
+        },    
+        {
+            id:"cc",
+            header:"CC"
+        }
+    ]
+    
+    return (
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        {columns.map((id, header) => {
+                            <th key={id}> {header} </th>
+                        })}
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    )
 }
- 
-export default async function DemoPage() {
-  const data = await getData()
- 
-  return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
-    </div>
-  )
-}
+
+export default page
