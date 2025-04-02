@@ -6,8 +6,8 @@ import { shadesOfGreen } from "@clerk/themes";
 import Header from '../components/header';
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-
 import { Providers } from './providers';
+import { PrimeReactProvider } from 'primereact/api';
 
 config.autoAddCss = false;
 
@@ -37,13 +37,15 @@ export default function RootLayout({ children }) {
       }}
     >
       <Providers>
-        <html lang="en">
-          <body>
-            <Header />
-            <div>
-              {children}</div>
-          </body>
-        </html>
+        <PrimeReactProvider>
+          <html lang="en">
+            <body>
+              <Header />
+              <div>
+                {children}</div>
+            </body>
+          </html>
+        </PrimeReactProvider>
       </Providers>
     </ClerkProvider>
   );
