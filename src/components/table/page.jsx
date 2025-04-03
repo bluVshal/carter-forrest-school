@@ -15,5 +15,5 @@ export default async function getData(props) {
         tableData = await getTeachers();
     }
 
-    return <SearchTable tableData={tableData} columns={columns} />
+    return <SearchTable tableData={tableData} columns={columns} type={type}/>
 }

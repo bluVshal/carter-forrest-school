@@ -13,5 +13,8 @@
         "teacherNameMin": "El nombre del profesor debe tener al menos 2 caracteres.",
         "search": "Buscar",
         "clearAll":"Borrar todos"
+    },
+    "dataTable":{
+        "export":"Exportar A PDF"
     }
 }

@@ -13,5 +13,8 @@
         "teacherNameMin":"Le nom de l'enseignant doit comporter au moins 2 caractères",
         "search":"Recherche",
         "clearAll":"Tout Effacer"
+    },
+    "dataTable":{
+        "export":"Exporter En PDF"
     }
 }

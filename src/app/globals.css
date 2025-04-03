@@ -124,17 +124,20 @@
 #btn_fr{
   background-image: url("/languages/France.png");
   background-size:     cover;
-  color:black
+  color:black;
+  margin-left: 1vw;
 }
 #btn_es{
   background-image: url("/languages/Spain.png");
   background-size:     cover;   
-  color:black
+  color:black;
+  margin-left: 1vw;
 }
 #btn_en{
   background-image: url("/languages/United_States.png");
   background-size:     cover; 
-  color:black  
+  color:black;
+  margin-left: 1vw;
 }
 /*
 .btnLangChange:disabled{
