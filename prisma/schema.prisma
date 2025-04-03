@@ -27,7 +27,6 @@ model Students {
   responsiblePartyName     String
   phoneNumber              Int
   responsiblePartyRelation String
-  isStdPresntToday         Boolean @default(true)
   createdAt                DateTime @default(now())
   updatedAt                DateTime @updatedAt
 }
@@ -40,7 +39,6 @@ model Teachers {
   phoneNumber    Int
   nic            String
   emergencyPhone Int
-  isTchPresntToday         Boolean @default(true)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }

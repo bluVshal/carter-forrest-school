@@ -9,7 +9,7 @@ const Students = async () => {
         Students Home Page
         <SearchForm />
         <div>
-          <DataTable />       
+          <DataTable type={'student'}/>       
         </div>
     </div>
   )
