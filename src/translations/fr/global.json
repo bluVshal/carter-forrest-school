@@ -12,9 +12,14 @@
     "searchForm": {
         "teacherNameMin":"Le nom de l'enseignant doit comporter au moins 2 caractères",
         "search":"Recherche",
-        "clearAll":"Tout Effacer"
+        "clearAll":"Tout Effacer",
+        "dob":"Date De Naissance"
     },
     "dataTable":{
-        "export":"Exporter En PDF"
+        "export":"Exporter En PDF",
+        "noRecordsFound":"Aucun Enregistrement Trouvé",
+        "id":"Id",
+        "name":"Nom",
+        "address":"Adresse"
     }
 }

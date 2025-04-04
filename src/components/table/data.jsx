@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import { Button } from '@/components/ui/button';
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
@@ -16,7 +17,10 @@ const SearchTable = (props) => {
     const exportColumns = columns.map((col) => ({ header: col.header, dataKey: col.id }));
     const [date, setDate] = useState(Date.now());
     const [t, i18n] = useTranslation("global");
-
+    const [filters, setFilters] = useState({
+        name: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        adrress: { value: null, matchMode: FilterMatchMode.CONTAINS }
+    });
     const exportPdf = () => {
         const doc = new jsPDF();
 
@@ -41,11 +45,13 @@ const SearchTable = (props) => {
                 selectionMode="single"
                 selection={selectedData}
                 onSelectionChange={(e) => setSelectedData(e.value)}
+                filters={filters} 
+                onFilter={(e) => setFilters(e.filters)}
+                emptyMessage={t('dataTable.noRecordsFound')}
             >
-
-                <Column selectionMode="single" headerStyle={{ width: '3rem' }}></Column>
+                <Column selectionMode="single" showGridlines stripedRows headerStyle={{ width: '3rem' }}></Column>
                 {columns.map((col, i) => (
-                    <Column key={col.id} field={col.id} sortable header={col.header} />
+                    <Column key={col.id} field={col.id} sortable filter filterPlaceholder="Search" header={t('dataTable.'+col.id)}  />
                 ))}
             </DataTable>
         </div>
