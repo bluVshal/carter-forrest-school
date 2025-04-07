@@ -20,6 +20,7 @@
         "noRecordsFound":"No Records Found",
         "id":"Id",
         "name":"Name",
-        "address":"Address"
+        "address":"Address",
+        "role":"Role"
     }
 }

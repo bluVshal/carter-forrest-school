@@ -20,6 +20,7 @@
         "noRecordsFound":"Aucun Enregistrement Trouvé",
         "id":"Id",
         "name":"Nom",
-        "address":"Adresse"
+        "address":"Adresse",
+        "role":"Rôle"
     }
 }

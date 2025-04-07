@@ -10,7 +10,7 @@ const Students = () => {
       </div>
       <SearchForm />
       <div>
-        <DataTable type={'student'} />
+        <DataTable type={'students'} />
       </div>
     </div>
   )

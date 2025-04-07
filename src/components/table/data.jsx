@@ -23,12 +23,12 @@ const SearchTable = (props) => {
     });
     const exportPdf = () => {
         const doc = new jsPDF();
-
+        let exportFileName = t('general.'+type);
         autoTable(doc, {
             body: tableData,
             columns: exportColumns,
         });
-        doc.save(type + date.toString() + '.pdf');
+        doc.save(exportFileName + date.toString() + '.pdf');
     };
 
     return (
