@@ -1,17 +1,16 @@
 import React from 'react';
-import { getTeachers } from '@/app/actions/teachers';
 import SearchForm from '@/components/search-form';
 import DataTable from '@/components/table/page';
 
-const Teachers = async () => {
-  const teachers = await getTeachers();
-
+const Teachers = () => {
   return (
-    <div className="ml-3 mt-4 max-h-20 font-LS">
-      Teachers Home Page
+    <div>
+      <div className="ml-3 mt-4 max-h-20 font-LS">
+        Teachers Home Page
+      </div>
       <SearchForm />
       <div>
-        <DataTable type={'teacher'}/>       
+        <DataTable type={'teacher'} />
       </div>
     </div>
   )

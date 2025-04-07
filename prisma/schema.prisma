@@ -1,6 +1,6 @@
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"] /* for linux env only*/
+  binaryTargets = ["native", "rhel-openssl-3.0.x"] /* for RHE linux env only*/
 }
 
 datasource db {
@@ -41,4 +41,27 @@ model Teachers {
   emergencyPhone Int
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+}
+
+model Staff {
+  id                       String   @id @default(cuid())
+  name                     String
+  address                  String
+  phoneNumber              Int
+  role                     Role
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+}
+
+enum Role {
+  CLEANING
+  USHER
+  SECRETARY
+  ASSISTANTRECTOR
+  RECTOR
+  ASSISTANTMANAGER
+  MANAGER
+  MESSENGER
+  DOCTOR
+  NURSE
 }

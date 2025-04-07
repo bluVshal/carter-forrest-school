@@ -2,15 +2,16 @@ import React from 'react';
 import SearchForm from '@/components/search-form';
 import DataTable from '@/components/table/page';
 
-const Students = async () => {
-
+const Students = () => {
   return (
-    <div className="ml-3 mt-4 max-h-20 font-LS">
+    <div>
+      <div className="ml-3 mt-4 max-h-20 font-LS">
         Students Home Page
-        <SearchForm />
-        <div>
-          <DataTable type={'student'}/>       
-        </div>
+      </div>
+      <SearchForm />
+      <div>
+        <DataTable type={'student'} />
+      </div>
     </div>
   )
 }

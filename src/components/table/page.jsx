@@ -1,4 +1,5 @@
 import React from 'react';
+import { getStaff } from '@/app/actions/staff';
 import { getStudents } from '@/app/actions/students';
 import { getTeachers } from '@/app/actions/teachers';
 import SearchTable from './data';
@@ -11,7 +12,10 @@ export default async function getData(props) {
     if (type === "student") {
         tableData = await getStudents();
     }
-    else {
+    else if (type === "staff"){
+        tableData = await getStaff();
+    }
+    else{
         tableData = await getTeachers();
     }
 
