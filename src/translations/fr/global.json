@@ -16,11 +16,14 @@
         "dob":"Date De Naissance"
     },
     "dataTable":{
-        "export":"Exporter En PDF",
+        "exportPdf":"Exporter En PDF",
+        "exportCsv":"Exporter En CSV",
         "noRecordsFound":"Aucun Enregistrement Trouvé",
         "id":"Id",
         "name":"Nom",
         "address":"Adresse",
-        "role":"Rôle"
+        "role":"Rôle",
+        "totalNumOfRecords":"Nombre total d'enregistrements",
+        "uploadCsv":"Télécharger Un CSV"
     }
 }

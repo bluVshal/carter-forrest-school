@@ -16,11 +16,14 @@
         "dob":"Date Of Birth"
     },
     "dataTable":{
-        "export":"Export To PDF",
+        "exportPdf":"Export To PDF",
+        "exportCsv":"Export To CSV",
         "noRecordsFound":"No Records Found",
         "id":"Id",
         "name":"Name",
         "address":"Address",
-        "role":"Role"
+        "role":"Role",
+        "totalNumOfRecords":"Total Number of records",
+        "uploadCsv":"Upload CSV"
     }
 }
