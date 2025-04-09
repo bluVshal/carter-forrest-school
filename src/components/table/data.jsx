@@ -12,6 +12,7 @@ import { autoTable } from 'jspdf-autotable';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExport, faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import InputDialog from './input-dialog';
 
 const SearchTable = (props) => {
     const { tableData, columns, type } = props;
@@ -21,6 +22,9 @@ const SearchTable = (props) => {
     const [t, i18n] = useTranslation("global");
     const toast = useRef(null);
     const dt = useRef(null);
+    const [file, setFile] = useState();
+    const fileReader = new FileReader();
+   
     const exportPdf = () => {
         const doc = new jsPDF();
         let exportFileName = t('general.' + type);
@@ -54,8 +58,21 @@ const SearchTable = (props) => {
         dt.current.exportCSV();
     };
 
-    const uploadCsv = () => {
-        console.log('Upload CSV');
+    const handleOnChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        if (file) {
+            fileReader.onload = function (event) {
+                const csvOutput = event.target.result;
+                console.log(csvOutput);
+            };
+            fileReader.readAsText(file);
+        }
+        else {
+            console.log('No file!')
+        }
     };
 
     const [filters, setFilters] = useState({
@@ -64,25 +81,26 @@ const SearchTable = (props) => {
         'role': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
     });
 
-    const countryBodyTemplate = (rowData) => {
-        return (
-            <div className="flex align-items-center gap-2">
-                <span>{rowData.name}</span>
-            </div>
-        );
-    };
-
-    const onUpload = () => {
-        toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
-    };
-
     return (
         <div>
             <Toast ref={toast} position="center" ></Toast>
             <Button onClick={exportPdf} > {t('dataTable.exportPdf')} <FontAwesomeIcon icon={faFileExport} /></Button>
             <Button onClick={exportCSV} > {t('dataTable.exportCsv')} <FontAwesomeIcon icon={faFileExport} /></Button>
-            <Button onClick={uploadCsv} > {t('dataTable.uploadCsv')} <FontAwesomeIcon icon={faFileExport} /></Button>
-            <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="text/csv" maxFileSize={1000000} onUpload={onUpload} />
+            <input
+                type={"file"}
+                id={"csvFileInput"}
+                accept={".csv"}
+                onChange={handleOnChange}
+            />
+
+            <Button
+                onClick={(e) => {
+                    handleOnSubmit(e);
+                }}
+            >
+                {t('dataTable.uploadCsv')}
+            </Button>
+
             <DataTable
                 ref={dt}
                 value={tableData}
