@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
+import { FilterMatchMode, FilterOperator } from 'primereact/api';
+import { FileUpload } from 'primereact/fileupload';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { FilterMatchMode, FilterOperator } from 'primereact/api';
+import { Toast } from 'primereact/toast';
 import { Button } from '@/components/ui/button';
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
@@ -19,12 +21,7 @@ const SearchTable = (props) => {
     const [t, i18n] = useTranslation("global");
     const toast = useRef(null);
     const dt = useRef(null);
-    const [filters, setFilters] = useState({
-        name: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        adrress: { value: null, matchMode: FilterMatchMode.CONTAINS }
-    });
     const exportPdf = () => {
-        console.log(dt);
         const doc = new jsPDF();
         let exportFileName = t('general.' + type);
 
@@ -37,8 +34,8 @@ const SearchTable = (props) => {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button icon="pi pi-pencil" className="mr-2" onClick={() => editData(rowData, type)} ><FontAwesomeIcon icon={faFilePen} /></Button>
-                <Button icon="pi pi-trash" onClick={() => confirmDelete(rowData, type)}><FontAwesomeIcon icon={faTrash} /></Button>
+                <Button className="mr-2" onClick={() => editData(rowData, type)} ><FontAwesomeIcon icon={faFilePen} /></Button>
+                <Button onClick={() => confirmDelete(rowData, type)}><FontAwesomeIcon icon={faTrash} /></Button>
             </React.Fragment>
         );
     };
@@ -61,12 +58,31 @@ const SearchTable = (props) => {
         console.log('Upload CSV');
     };
 
+    const [filters, setFilters] = useState({
+        'name': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        'address': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        'role': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+    });
+
+    const countryBodyTemplate = (rowData) => {
+        return (
+            <div className="flex align-items-center gap-2">
+                <span>{rowData.name}</span>
+            </div>
+        );
+    };
+
+    const onUpload = () => {
+        toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+    };
 
     return (
         <div>
+            <Toast ref={toast} position="center" ></Toast>
             <Button onClick={exportPdf} > {t('dataTable.exportPdf')} <FontAwesomeIcon icon={faFileExport} /></Button>
             <Button onClick={exportCSV} > {t('dataTable.exportCsv')} <FontAwesomeIcon icon={faFileExport} /></Button>
             <Button onClick={uploadCsv} > {t('dataTable.uploadCsv')} <FontAwesomeIcon icon={faFileExport} /></Button>
+            <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="text/csv" maxFileSize={1000000} onUpload={onUpload} />
             <DataTable
                 ref={dt}
                 value={tableData}
@@ -85,7 +101,7 @@ const SearchTable = (props) => {
             >
                 <Column selectionMode="single" showGridlines stripedRows headerStyle={{ width: '3rem' }}></Column>
                 {columns.map((col, i) => (
-                    <Column key={col.id} field={col.id} sortable header={t('dataTable.' + col.id)} />
+                    <Column key={col.id} field={col.id} sortable header={t('dataTable.' + col.id)} filter filterField={col.id} filterPlaceholder="Search" />
                 ))}
                 <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>
             </DataTable>
