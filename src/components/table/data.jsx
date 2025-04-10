@@ -11,7 +11,7 @@ import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileExport, faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faFileExport, faFilePen, faFileUpload, faTrash } from '@fortawesome/free-solid-svg-icons';
 import InputDialog from './input-dialog';
 
 const SearchTable = (props) => {
@@ -24,7 +24,8 @@ const SearchTable = (props) => {
     const dt = useRef(null);
     const [file, setFile] = useState();
     const fileReader = new FileReader();
-   
+    const [visible, setVisible] = useState(false);
+
     const exportPdf = () => {
         const doc = new jsPDF();
         let exportFileName = t('general.' + type);
@@ -67,6 +68,7 @@ const SearchTable = (props) => {
             fileReader.onload = function (event) {
                 const csvOutput = event.target.result;
                 console.log(csvOutput);
+                setVisible(true);
             };
             fileReader.readAsText(file);
         }
@@ -98,7 +100,8 @@ const SearchTable = (props) => {
                     handleOnSubmit(e);
                 }}
             >
-                {t('dataTable.uploadCsv')}
+                {t('dataTable.uploadCsv')} 
+                <FontAwesomeIcon icon={faFileUpload} />
             </Button>
 
             <DataTable
@@ -123,6 +126,7 @@ const SearchTable = (props) => {
                 ))}
                 <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>
             </DataTable>
+            <InputDialog visible={visible} />
         </div>
     )
 }

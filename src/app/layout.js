@@ -8,6 +8,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { Providers } from './providers';
 import { PrimeReactProvider } from 'primereact/api';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 config.autoAddCss = false;
 

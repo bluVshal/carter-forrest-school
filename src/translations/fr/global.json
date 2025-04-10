@@ -24,6 +24,6 @@
         "address":"Adresse",
         "role":"Rôle",
         "totalNumOfRecords":"Nombre total d'enregistrements",
-        "uploadCsv":"Télécharger Un CSV"
+        "uploadCsv":"Télécharger Le CSV"
     }
 }
