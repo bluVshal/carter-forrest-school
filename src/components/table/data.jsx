@@ -25,6 +25,7 @@ const SearchTable = (props) => {
     const [file, setFile] = useState();
     const fileReader = new FileReader();
     const [visible, setVisible] = useState(false);
+    const [csvOutput, setCsvOutput] = useState("");
 
     const exportPdf = () => {
         const doc = new jsPDF();
@@ -66,8 +67,8 @@ const SearchTable = (props) => {
         e.preventDefault();
         if (file) {
             fileReader.onload = function (event) {
-                const csvOutput = event.target.result;
-                console.log(csvOutput);
+                const csvFileOutput = event.target.result;
+                setCsvOutput(csvFileOutput);
                 setVisible(true);
             };
             fileReader.readAsText(file);
@@ -126,7 +127,7 @@ const SearchTable = (props) => {
                 ))}
                 <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>
             </DataTable>
-            <InputDialog visible={visible} />
+            <InputDialog visible={visible} csvOutput={csvOutput}/>
         </div>
     )
 }
