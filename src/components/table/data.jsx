@@ -2,7 +2,6 @@
 
 import React, { useState, useRef } from 'react';
 import { FilterMatchMode, FilterOperator } from 'primereact/api';
-import { FileUpload } from 'primereact/fileupload';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
@@ -87,8 +86,8 @@ const SearchTable = (props) => {
     return (
         <div>
             <Toast ref={toast} position="center" ></Toast>
-            <Button onClick={exportPdf} > {t('dataTable.exportPdf')} <FontAwesomeIcon icon={faFileExport} /></Button>
-            <Button onClick={exportCSV} > {t('dataTable.exportCsv')} <FontAwesomeIcon icon={faFileExport} /></Button>
+            <Button className="mr-2" onClick={exportPdf} > {t('dataTable.exportPdf')} <FontAwesomeIcon icon={faFileExport} /></Button>
+            <Button className="mr-2" onClick={exportCSV} > {t('dataTable.exportCsv')} <FontAwesomeIcon icon={faFileExport} /></Button>
             <input
                 type={"file"}
                 id={"csvFileInput"}
@@ -96,16 +95,17 @@ const SearchTable = (props) => {
                 onChange={handleOnChange}
             />
 
-            <Button
+           { !file ? <></> : <Button
                 onClick={(e) => {
                     handleOnSubmit(e);
                 }}
             >
                 {t('dataTable.uploadCsv')} 
                 <FontAwesomeIcon icon={faFileUpload} />
-            </Button>
+            </Button> }
 
             <DataTable
+                className="mt-3"
                 ref={dt}
                 value={tableData}
                 dataKey="id"

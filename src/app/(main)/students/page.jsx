@@ -5,11 +5,13 @@ import DataTable from '@/components/table/page';
 const Students = () => {
   return (
     <div>
-      <div className="ml-3 mt-4 max-h-20 font-LS">
+      <div className="ml-3 mt-4 font-LS">
         Students Home Page
       </div>
-      <SearchForm />
-      <div>
+      <div className="ml-3 mt-4">
+        <SearchForm />
+      </div>
+      <div className="ml-3 mt-4">
         <DataTable type={'students'} />
       </div>
     </div>

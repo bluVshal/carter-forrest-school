@@ -4,11 +4,17 @@ import DataTable from '@/components/table/page';
 
 const Staff = () => {
   return (
-    <div>Staff Home Page
-       <SearchForm />
-        <div>
-          <DataTable type={'staff'}/>       
-        </div>
+    <div>
+      <div className="ml-3 mt-4 max-h-20 font-LS">
+        Staff Home Page
+      </div>
+      <div className="ml-3 mt-4">
+        <SearchForm />
+      </div>
+      <div className="ml-3 mt-4">
+        <DataTable type={'staff'} />
+      </div>
+
     </div>
   )
 }

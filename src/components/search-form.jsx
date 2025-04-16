@@ -55,8 +55,8 @@ const SearchForm = () => {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit">{t('searchForm.search')}<FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
-                        <Button type="reset" onClick={clearAllHandler}>{t('searchForm.clearAll')}<FontAwesomeIcon icon={faXmark} /></Button>
+                        <Button className="mr-2" type="submit">{t('searchForm.search')}<FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
+                        <Button className="mr-2" type="reset" onClick={clearAllHandler}>{t('searchForm.clearAll')}<FontAwesomeIcon icon={faXmark} /></Button>
                     </form>
                 </Form>
             </div>
